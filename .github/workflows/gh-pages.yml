@@ -23,14 +23,14 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: "17"
-      - uses: pnpm/action-setup@v1.2.1
+      - uses: pnpm/action-setup@v2
         with:
           version: 6
           run_install: true
       - name: Build
         run: |
           cd packages/doc
-          BASE_URL=/likftc pnpm run build
+          BASE_URL=/g2d pnpm run build
           pnpm sitemap
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
