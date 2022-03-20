@@ -30,8 +30,7 @@ jobs:
       - name: Build
         run: |
           cd packages/doc
-          BASE_URL=/g2d pnpm run build
-          pnpm sitemap
+          pnpm run build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
