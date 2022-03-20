@@ -1,0 +1,20 @@
+{
+  "folders": [
+    {
+      "name": "cli",
+      "path": "packages/cli"
+    },
+    {
+      "name": "core",
+      "path": "packages/core"
+    },
+    {
+      "name": "doc",
+      "path": "packages/doc"
+    },
+    {
+      "name": "root",
+      "path": "."
+    }
+  ]
+}

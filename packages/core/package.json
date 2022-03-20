@@ -1,0 +1,29 @@
+{
+  "name": "@g2d/core",
+  "private": true,
+  "description": "Transform .gitignore to .dockerignore .",
+  "keywords": [
+    "git",
+    "gitignore",
+    "docker",
+    "dockerignore",
+    "ignore",
+    "ignorefiles",
+    "g2d"
+  ],
+  "homepage": "https://vdustr.dev/g2d.js/node/cli/",
+  "bugs": {
+    "url": "https://github.com/VdustR/g2d.js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VdustR/g2d.js.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "VdustR",
+    "email": "vdustr@gmail.com",
+    "url": "https://vdustr.dev"
+  },
+  "type": "module"
+}
