@@ -4,6 +4,8 @@ import type { RollupOptions } from "rollup";
 import typescript from "rollup-plugin-typescript2";
 import packageJson from "../package.json";
 import { MODULE, PKG } from "./type";
+import { nodeResolve } from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
 
 const repoRoot = resolve(__dirname, "..");
 
@@ -11,9 +13,9 @@ function genConfig(
   pkg: PKG,
   module: MODULE,
   {
-    cjsOnly = false,
+    isCli = false,
   }: {
-    cjsOnly?: boolean;
+    isCli?: boolean;
   } = {}
 ) {
   const isEsm = module === "ES2015";
@@ -24,15 +26,28 @@ function genConfig(
   const config: RollupOptions = {
     input: resolve(pkgDir, "index.ts"),
     output: {
-      preserveModules: true,
-      dir: distDir,
+      preserveModules: !isCli,
+      ...(isCli ? { file: resolve(distDir, "bin/cli.js") } : { dir: distDir }),
       format: isEsm ? "esm" : "cjs",
       exports: "auto",
     },
-    external: [
-      ...Object.keys(packageJson.dependencies).filter((pkg) => "tslib" !== pkg),
-    ],
+    external: isCli
+      ? []
+      : [
+          ...Object.keys(packageJson.dependencies).filter(
+            (pkg) => "tslib" !== pkg
+          ),
+          ...Object.values(PKG).map((pkg) => `@g2d/${pkg}`),
+        ],
     plugins: [
+      ...(isCli
+        ? [
+            nodeResolve({
+              preferBuiltins: false,
+            }),
+            commonjs(),
+          ]
+        : []),
       ...(isTs
         ? [
             typescript({
@@ -50,7 +65,7 @@ function genConfig(
             }),
           ]
         : []),
-      ...(isEsm || cjsOnly
+      ...(isEsm || isCli
         ? []
         : [
             renameExtensions({
@@ -67,7 +82,7 @@ function genConfig(
 }
 
 const configs: RollupOptions[] = [
-  genConfig(PKG.cli, MODULE.COMMONJS, { cjsOnly: true }),
+  genConfig(PKG.cli, MODULE.COMMONJS, { isCli: true }),
   genConfig(PKG.core, MODULE.ES2015),
   genConfig(PKG.core, MODULE.COMMONJS),
 ];

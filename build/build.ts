@@ -118,12 +118,4 @@ async function setPeerDependencies(pkg: PKG) {
   });
 }
 
-await Promise.all(Object.values(PKG).map((pkg) => setPeerDependencies(pkg)));
-
-async function cloneBin(pkg: PKG) {
-  const pkgDir = resolve(packagesDir, pkg);
-  const distDir = resolve(targetDir, pkg);
-  return fs.copy(resolve(pkgDir, "bin"), resolve(distDir, "bin"));
-}
-
-await cloneBin(PKG.cli);
+await setPeerDependencies(PKG.core);
