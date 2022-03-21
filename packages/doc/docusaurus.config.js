@@ -86,7 +86,7 @@ const config = {
                 href: "https://github.com/VdustR/g2d.js",
               },
               {
-                label: "Downloads",
+                label: "Download Binaries",
                 href: "https://github.com/VdustR/g2d/releases",
               },
               {
@@ -108,7 +108,7 @@ const config = {
               },
               {
                 label: "Deno",
-                href: "https://deno.land/x/g2d",
+                href: "/deno",
               },
             ],
           },
