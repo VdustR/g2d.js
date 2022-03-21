@@ -28,8 +28,8 @@
     "url": "https://vdustr.dev"
   },
   "bin": {
-    "@g2d/cli": "bin/cli.js",
-    "g2d": "bin/cli.js"
+    "@g2d/cli": "./bin/cli.js",
+    "g2d": "./bin/cli.js"
   },
   "dependencies": {
     "@g2d/core": "workspace:*"
