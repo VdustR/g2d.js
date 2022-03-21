@@ -6,6 +6,7 @@ import packageJson from "../package.json";
 import { MODULE, PKG } from "./type";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
+import shebang from "rollup-plugin-add-shebang";
 
 const repoRoot = resolve(__dirname, "..");
 
@@ -46,6 +47,7 @@ function genConfig(
               preferBuiltins: false,
             }),
             commonjs(),
+            shebang(),
           ]
         : []),
       ...(isTs

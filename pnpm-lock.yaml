@@ -26,6 +26,7 @@ importers:
       glob: ^7.2.0
       mkdirp: ^1.0.4
       rollup: ^2.70.1
+      rollup-plugin-add-shebang: ^0.3.1
       rollup-plugin-typescript2: ^0.31.2
       tslib: ^2.3.1
       typescript: ^4.6.2
@@ -53,6 +54,7 @@ importers:
       glob: 7.2.0
       mkdirp: 1.0.4
       rollup: 2.70.1
+      rollup-plugin-add-shebang: 0.3.1
       rollup-plugin-typescript2: 0.31.2_8ba2fd11dd27c326f3ba677c19c538f8
       tslib: 2.3.1
       typescript: 4.6.2
@@ -6922,6 +6924,13 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.0
+
+  /rollup-plugin-add-shebang/0.3.1:
+    resolution: {integrity: sha512-tKONSgKoVw9Om1cp1CnAlPQ9nsHBzu8fInKObX3zT5KZVoAJtslD1aBL84lJuKLeh+L28dB26CBBeYT+doTMLg==}
+    dependencies:
+      magic-string: 0.25.9
+      rollup-pluginutils: 2.8.2
+    dev: false
 
   /rollup-plugin-typescript2/0.31.2_8ba2fd11dd27c326f3ba677c19c538f8:
     resolution: {integrity: sha512-hRwEYR1C8xDGVVMFJQdEVnNAeWRvpaY97g5mp3IeLnzhNXzSVq78Ye/BJ9PAaUfN4DXa/uDnqerifMOaMFY54Q==}
