@@ -1,7 +1,7 @@
 import babelParser from "@babel/parser";
 import traverse from "@babel/traverse";
 import builtinModules from "builtin-modules";
-import { copyFile, readFile, writeFile } from "fs/promises";
+import fs from "fs-extra";
 import glob from "glob";
 import mkdirp from "mkdirp";
 import { dirname, resolve } from "path";
@@ -25,16 +25,21 @@ async function setPackage(
 ) {
   await mkdirp(resolve(targetDir, packageName));
   await Promise.all([
-    copyFile(
-      resolve(__dirname, "../LICENSE"),
-      resolve(targetDir, packageName, "LICENSE")
-    ).catch(console.trace),
-    copyFile(
-      resolve(packagesDir, packageName, "README.md"),
-      resolve(targetDir, packageName, "README.md")
-    ).catch(console.trace),
+    fs
+      .copyFile(
+        resolve(__dirname, "../LICENSE"),
+        resolve(targetDir, packageName, "LICENSE")
+      )
+      .catch(console.trace),
+    fs
+      .copyFile(
+        resolve(packagesDir, packageName, "README.md"),
+        resolve(targetDir, packageName, "README.md")
+      )
+      .catch(console.trace),
 
-    readFile(resolve(packagesDir, packageName, "package.json"), "utf8")
+    fs
+      .readFile(resolve(packagesDir, packageName, "package.json"), "utf8")
       .then((packageJson) => JSON.parse(packageJson))
       .then((packageJson) => {
         delete packageJson.private;
@@ -47,7 +52,7 @@ async function setPackage(
         return packageJson;
       })
       .then((packageJson) => {
-        writeFile(
+        fs.writeFile(
           resolve(targetDir, packageName, "package.json"),
           JSON.stringify(packageJson, null, 2),
           { encoding: "utf8" }
@@ -85,7 +90,7 @@ async function setPeerDependencies(pkg: PKG) {
   const depsMap = new Map<string, string>();
   await Promise.all(
     files.map(async (file) => {
-      const jsCode = await readFile(file, "utf8");
+      const jsCode = await fs.readFile(file, "utf8");
       const ast = babelParser.parse(jsCode, {
         sourceType: "module",
       });
@@ -106,11 +111,19 @@ async function setPeerDependencies(pkg: PKG) {
   if (depsEntries.length === 0) return;
   const deps = Object.fromEntries(depsEntries);
   const pkgPath = resolve(targetDir, pkg, "package.json");
-  const originalPkgContent = JSON.parse(await readFile(pkgPath, "utf8"));
+  const originalPkgContent = JSON.parse(await fs.readFile(pkgPath, "utf8"));
   const fixedPkgContent = { ...originalPkgContent, peerDependencies: deps };
-  await writeFile(pkgPath, JSON.stringify(fixedPkgContent, null, 2), {
+  await fs.writeFile(pkgPath, JSON.stringify(fixedPkgContent, null, 2), {
     encoding: "utf8",
   });
 }
 
 await Promise.all(Object.values(PKG).map((pkg) => setPeerDependencies(pkg)));
+
+async function cloneBin(pkg: PKG) {
+  const pkgDir = resolve(packagesDir, pkg);
+  const distDir = resolve(targetDir, pkg);
+  return fs.copy(resolve(pkgDir, "bin"), resolve(distDir, "bin"));
+}
+
+await cloneBin(PKG.cli);

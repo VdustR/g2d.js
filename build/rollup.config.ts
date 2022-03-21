@@ -7,7 +7,15 @@ import { MODULE, PKG } from "./type";
 
 const repoRoot = resolve(__dirname, "..");
 
-function genConfig(pkg: PKG, module: MODULE) {
+function genConfig(
+  pkg: PKG,
+  module: MODULE,
+  {
+    cjsOnly = false,
+  }: {
+    cjsOnly?: boolean;
+  } = {}
+) {
   const isEsm = module === "ES2015";
   const isTyped = isEsm;
   const isTs = true;
@@ -23,7 +31,6 @@ function genConfig(pkg: PKG, module: MODULE) {
     },
     external: [
       ...Object.keys(packageJson.dependencies).filter((pkg) => "tslib" !== pkg),
-      "svelte/internal",
     ],
     plugins: [
       ...(isTs
@@ -33,22 +40,21 @@ function genConfig(pkg: PKG, module: MODULE) {
               tsconfig: resolve(__dirname, "esm/tsconfig.json"),
               tsconfigOverride: {
                 module,
-                declaration: isTyped,
                 declarationDir: ".",
                 target: "ES5",
-                include: [
-                  resolve(pkgDir, `**/*.ts`),
-                  resolve(pkgDir, `**/*.svelte`),
-                ],
+                include: [resolve(pkgDir, `**/*.ts`)],
+                compilerOptions: {
+                  declaration: isTyped,
+                },
               },
             }),
           ]
         : []),
-      ...(isEsm
+      ...(isEsm || cjsOnly
         ? []
         : [
             renameExtensions({
-              include: ["**/*.ts", "**/*.svelte"],
+              include: ["**/*.ts"],
               match: "\x00tslib.js",
               mappings: {
                 ".js": ".cjs",
@@ -61,7 +67,7 @@ function genConfig(pkg: PKG, module: MODULE) {
 }
 
 const configs: RollupOptions[] = [
-  genConfig(PKG.cli, MODULE.COMMONJS),
+  genConfig(PKG.cli, MODULE.COMMONJS, { cjsOnly: true }),
   genConfig(PKG.core, MODULE.ES2015),
   genConfig(PKG.core, MODULE.COMMONJS),
 ];

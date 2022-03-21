@@ -4,7 +4,6 @@
     "module": "ES2015",
     "declaration": true,
     "target": "ES5",
-
     "moduleResolution": "node",
     "preserveSymlinks": true,
     "noFallthroughCasesInSwitch": true,
