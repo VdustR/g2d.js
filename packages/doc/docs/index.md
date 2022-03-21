@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# g2d.js
+# Introduce
 
 Transform `.gitignore` to `.dockerignore`.
 
@@ -21,3 +21,9 @@ Transform `.gitignore` to `.dockerignore`.
 ## Deno
 
 - [deno](./deno)
+
+## g2d Online
+
+We also provide a online tool to help you transform the `.gitignore` to `.dockerignore` easily.
+
+[🚀 Go to the online tool](./online)

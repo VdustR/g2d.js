@@ -48,8 +48,8 @@ You can integrate running remotely with shell alias and it will always fetch the
 
 For example, integrating `pnpm dlx` with `fish shell`:
 
-```diff title="~/.config/fish/config.fish"
+```bash {2}
   if status is-interactive
-+     alias g2d "pnpm -s --package=@g2d/cli dlx g2d"
+     alias g2d "pnpm -s --package=@g2d/cli dlx g2d"
   end
 ```

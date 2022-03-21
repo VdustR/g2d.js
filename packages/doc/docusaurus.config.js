@@ -64,6 +64,11 @@ const config = {
         },
         items: [
           {
+            to: "/online",
+            label: "Try it Online!",
+            position: "right",
+          },
+          {
             href: "https://github.com/facebook/docusaurus",
             label: "GitHub",
             position: "right",
@@ -104,6 +109,15 @@ const config = {
               {
                 label: "Deno",
                 href: "https://deno.land/x/g2d",
+              },
+            ],
+          },
+          {
+            title: "Tools",
+            items: [
+              {
+                label: "g2d Online",
+                to: "/online",
               },
             ],
           },
