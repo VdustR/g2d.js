@@ -8,7 +8,7 @@ const cli = cac();
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 cli
-  .command("version <version>", "Version number to inject into package.json")
+  .command("[version]", "Version number to inject into package.json")
   .action((version) => {
     glob
       .sync(resolve(__dirname, "../dist/*/package.json"))

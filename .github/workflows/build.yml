@@ -43,7 +43,7 @@ jobs:
       - name: Build
         run: pnpm build
       - name: version
-        run: pnpm build:version -- version ${{ steps.get_version.outputs.version }}
+        run: pnpm build:version -- ${{ steps.get_version.outputs.version }}
 
       - uses: JS-DevTools/npm-publish@v1
         with:
