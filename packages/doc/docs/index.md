@@ -20,5 +20,4 @@ Transform `.gitignore` to `.dockerignore`.
 
 ## Deno
 
-- [lib](./deno/lib)
-- [cli](./deno/cli)
+- [deno](./deno)
