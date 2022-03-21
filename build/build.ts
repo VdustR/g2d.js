@@ -47,6 +47,10 @@ async function setPackage(
           packageJson.main = "index.js";
         } else {
           packageJson.main = "index.cjs";
+          packageJson.exports = {
+            import: "./index.js",
+            require: "./index.cjs",
+          };
           packageJson.module = "index.js";
         }
         return packageJson;
