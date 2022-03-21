@@ -6,7 +6,7 @@ importers:
     specifiers:
       '@babel/parser': ^7.17.3
       '@babel/traverse': ^7.17.3
-      '@g2d/core': workspace:^undefined
+      '@g2d/core': workspace:*
       '@rollup/plugin-commonjs': ^21.0.2
       '@rollup/plugin-node-resolve': ^13.1.3
       '@rollup/plugin-typescript': ^8.3.1
@@ -59,10 +59,7 @@ importers:
       vitest: 0.5.8
 
   packages/cli:
-    specifiers:
-      '@g2d/core': workspace:*
-    dependencies:
-      '@g2d/core': link:../core
+    specifiers: {}
 
   packages/core:
     specifiers: {}
