@@ -1,29 +1,84 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 # @g2d/cli
 
 `@g2d/cli` is an executable npm bin to transform .gitignore to .dockerignore .
 
+## Run Remotely
+
+<Tabs>
+<TabItem value="npx" label="npm">
+
 ```bash
-# Run remotely:
 $ npx -y @g2d/cli
+```
+
+</TabItem>
+<TabItem value="yarn" label="yarn">
+
+```bash
 $ yarn dlx @g2d/cli
+```
+
+</TabItem>
+<TabItem value="pnpm" label="pnpm">
+
+```bash
 $ pnpm --package=@g2d/cli dlx g2d
+```
 
-# Or install globally:
+</TabItem>
+</Tabs>
+
+## Install Globally
+
+<Tabs>
+<TabItem value="npx" label="npm">
+
+```bash
 $ npm i -g @g2d/cli
-$ pnpm i -g @g2d/cli
+```
 
+</TabItem>
+<TabItem value="pnpm" label="pnpm">
+
+```bash
+$ pnpm i -g @g2d/cli
+```
+
+</TabItem>
+</Tabs>
+
+## Usage
+
+Transform`.gitignore` into `.dockerignore`:
+
+```bash
+$ g2d -o .
+```
+
+stdin / stdout is supported:
+
+```bash
+$ cat .gitignore | g2d > .dockerignore
+```
+
+By use cases:
+
+```bash
 # Transform`.gitignore` into `.dockerignore`:
 $ g2d -o .
 $ g2d > .dockerignore
-$ cat .gitignore > @g2d/cli
+$ cat .gitignore | g2d > .dockerignore
 
 # Transform`.gitignore` to stdout:
-$ @g2d/cli
-$ cat .gitignore > @g2d/cli
+$ g2d
+$ cat .gitignore | g2d
 
 # From specific file:
-$ g2d > /my/.gitignore
-$ cat /my/.gitignore > @g2d/cli
+$ g2d /my/.gitignore
+$ cat /my/.gitignore | g2d
 
 # Help
 $ g2d -h
