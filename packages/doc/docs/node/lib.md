@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash npm2yarn
-npm install @g2d/core
+npm install @g2d/core detect-newline@4.0.0
 ```
 
 ## Usage
