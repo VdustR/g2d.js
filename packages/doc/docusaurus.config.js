@@ -125,9 +125,9 @@ const config = {
         copyright: `Copyright © 2022-${new Date().getFullYear()} made by ${aLink(
           "//vdustr.dev",
           "ViPro"
-        )} with 💙 under license ${aLink(
+        )} with 💙 under ${aLink(
           "//github.com/VdustR/g2d.js/blob/main/LICENSE",
-          "MIT"
+          "MIT License"
         )}.`,
       },
       prism: {

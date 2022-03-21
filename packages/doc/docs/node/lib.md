@@ -18,7 +18,7 @@ import g2d from "@g2d/core";
 const dockerignore = g2d(gitignore);
 ```
 
-Using with Node environment:
+Using in Node environment:
 
 ```json title="./package.json"
 {
