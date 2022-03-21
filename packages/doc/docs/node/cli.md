@@ -1,5 +1,7 @@
 # @g2d/cli
 
+`@g2d/cli` is an executable npm bin to transform .gitignore to .dockerignore .
+
 ```bash
 # Run remotely:
 $ npx -y @g2d/cli

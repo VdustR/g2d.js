@@ -1,5 +1,7 @@
 # @g2d/core
 
+`@g2d/core` is a Node.js library to transform .gitignore string to .dockerignore string.
+
 ## Installation
 
 ```bash npm2yarn
