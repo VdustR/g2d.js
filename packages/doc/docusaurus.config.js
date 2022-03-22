@@ -70,8 +70,8 @@ const config = {
             position: "right",
           },
           {
-            href: "https://github.com/facebook/docusaurus",
-            label: "GitHub",
+            href: "https://github.com/VdustR/g2d.js",
+            label: "Source Code",
             position: "right",
           },
         ],
