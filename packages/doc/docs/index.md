@@ -6,6 +6,10 @@ sidebar_position: 1
 
 Transform `.gitignore` to `.dockerignore`.
 
+[![NPM Publish](https://github.com/VdustR/g2d.js/actions/workflows/build.yml/badge.svg)](https://github.com/VdustR/g2d.js/actions/workflows/build.yml) [![GitHub Pages](https://github.com/VdustR/g2d.js/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/VdustR/g2d.js/actions/workflows/gh-pages.yml)
+
+![g2d banner](/img/g2d-og.png)
+
 | `.gitignore` | `.dockerignore` |
 | ------------ | --------------- |
 | `!/`         | `!`             |
@@ -15,8 +19,8 @@ Transform `.gitignore` to `.dockerignore`.
 
 ## Node
 
-- [lib](./node/lib)
-- [cli](./node/cli)
+- [@g2d/core](./node/lib)
+- [@g2d/cli](./node/cli)
 
 ## Deno
 

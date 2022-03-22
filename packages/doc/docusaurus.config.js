@@ -23,7 +23,7 @@ const config = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   trailingSlash: true,
-  favicon: "img/favicon.ico",
+  favicon: "img/logo.svg",
   organizationName: "vdustr", // Usually your GitHub org/user name.
   projectName: "g2d.js", // Usually your repo name.
 
@@ -51,6 +51,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      image: "img/g2d-og.png",
       colorMode: {
         defaultMode: "dark",
         disableSwitch: true,
@@ -122,6 +123,11 @@ const config = {
             ],
           },
         ],
+        logo: {
+          alt: "g2d Logo",
+          src: "img/g2d.svg",
+          width: 160,
+        },
         copyright: `Copyright © 2022-${new Date().getFullYear()} made by ${aLink(
           "//vdustr.dev",
           "ViPro"
