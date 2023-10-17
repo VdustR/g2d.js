@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "@babel/parser": "^7.17.8",
-    "@babel/traverse": "^7.17.3",
+    "@babel/traverse": "^7.23.2",
     "@g2d/core": "workspace:*",
     "@rollup/plugin-commonjs": "^21.0.2",
     "@rollup/plugin-node-resolve": "^13.1.3",
