@@ -2,7 +2,7 @@
 
 Transform `.gitignore` to `.dockerignore`.
 
-Please check the [official documentation](https://vdustr.dev/g2d.js/).
+Please check the [official documentation](https://vdustr.github.io/g2d.js/).
 
 ## Development
 

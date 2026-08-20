@@ -1,3 +1,3 @@
 # @g2d/cli
 
-📃 Documentation: <https://vdustr.dev/g2d.js/node/cli/>.
+📃 Documentation: <https://vdustr.github.io/g2d.js/node/cli/>.

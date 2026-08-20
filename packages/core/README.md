@@ -1,3 +1,3 @@
 # @g2d/core
 
-📃 Documentation: <https://vdustr.dev/g2d.js/node/lib/>.
+📃 Documentation: <https://vdustr.github.io/g2d.js/node/lib/>.

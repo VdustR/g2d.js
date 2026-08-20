@@ -18,7 +18,7 @@ function aLink(url, text) {
 const config = {
   title: "g2d",
   tagline: "Transform .gitignore to .dockerignore .",
-  url: "https://vdustr.dev",
+  url: "https://vdustr.github.io",
   baseUrl: "/g2d.js/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -129,7 +129,7 @@ const config = {
           width: 160,
         },
         copyright: `Copyright © 2022-${new Date().getFullYear()} made by ${aLink(
-          "//vdustr.dev",
+          "https://vdustr.github.io",
           "ViPro"
         )} with 💙 under ${aLink(
           "//github.com/VdustR/g2d.js/blob/main/LICENSE",
