@@ -1,5 +1,5 @@
 {
-  "extends": "@tsconfig/node16-strictest-esm",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "module": "ES2015",
     "declaration": true,

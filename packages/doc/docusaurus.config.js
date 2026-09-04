@@ -1,5 +1,5 @@
 // @ts-check
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const { themes } = require("prism-react-renderer");
 const { escape } = require("html-escaper");
 
 /**
@@ -21,7 +21,11 @@ const config = {
   url: "https://vdustr.github.io",
   baseUrl: "/g2d.js/",
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    },
+  },
   trailingSlash: true,
   favicon: "img/logo.svg",
   organizationName: "vdustr", // Usually your GitHub org/user name.
@@ -137,7 +141,7 @@ const config = {
         )}.`,
       },
       prism: {
-        darkTheme: darkCodeTheme,
+        darkTheme: themes.dracula,
       },
     }),
 };

@@ -1,6 +1,7 @@
 name: GitHub Pages
 
 on:
+  pull_request:
   push:
     branches:
       - main
@@ -10,29 +11,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Cache pnpm modules
-        uses: actions/cache@v4
-        env:
-          cache-name: cache-pnpm-modules
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-${{ hashFiles('**/package.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "17"
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 6
-          run_install: true
+          node-version: "20.19.0"
+      - name: Install dependencies
+        run: corepack enable && pnpm install --frozen-lockfile
+      - name: Test
+        run: pnpm test
+      - name: Type check
+        run: pnpm exec tsc --noEmit && pnpm --filter ./packages/doc typecheck
       - name: Build
-        run: |
-          cd packages/doc
-          pnpm run build
+        run: pnpm build && pnpm --filter ./packages/doc build
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        if: github.event_name == 'push'
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./packages/doc/build

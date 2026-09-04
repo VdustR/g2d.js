@@ -1,14 +1,22 @@
-import renameExtensions from "@vdustr/rollup-plugin-rename-extensions";
-import { resolve } from "path";
+import renameExtensionsModule from "@vdustr/rollup-plugin-rename-extensions";
+import { readFileSync } from "fs";
+import { dirname, resolve } from "path";
+import { fileURLToPath } from "url";
 import type { RollupOptions } from "rollup";
 import typescript from "rollup-plugin-typescript2";
-import packageJson from "../package.json";
 import { MODULE, PKG } from "./type";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import shebang from "rollup-plugin-add-shebang";
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(__dirname, "..");
+const renameExtensions = (
+  renameExtensionsModule as unknown as { default: typeof renameExtensionsModule }
+).default;
+const packageJson = JSON.parse(
+  readFileSync(resolve(repoRoot, "package.json"), "utf8")
+) as { dependencies: Record<string, string> };
 
 function genConfig(
   pkg: PKG,
