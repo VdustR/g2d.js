@@ -1,9 +1,29 @@
 {
   "compilerOptions": {
-    "moduleResolution": "Node",
-    "resolveJsonModule": true
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "checkJs": true,
+    "esModuleInterop": true,
+    "exactOptionalPropertyTypes": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["ES2021"],
+    "module": "ES2022",
+    "moduleResolution": "Bundler",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ES2021",
+    "verbatimModuleSyntax": true
   },
   "exclude": ["node_modules", "dist"],
-  "extends": "@tsconfig/node16-strictest-esm/tsconfig.json",
   "include": ["packages/**/*.ts", "build/**/*.ts"]
 }

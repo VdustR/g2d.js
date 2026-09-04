@@ -1,6 +1,7 @@
 name: GitHub Pages
 
 on:
+  pull_request:
   push:
     branches:
       - main
@@ -22,16 +23,19 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-
       - uses: actions/setup-node@v2
         with:
-          node-version: "17"
+          node-version: "20"
       - uses: pnpm/action-setup@v2
         with:
-          version: 6
+          version: 10.34.5
           run_install: true
+      - name: Test
+        run: pnpm test
+      - name: Type check
+        run: pnpm exec tsc --noEmit && pnpm --filter ./packages/doc typecheck
       - name: Build
-        run: |
-          cd packages/doc
-          pnpm run build
+        run: pnpm build && pnpm --filter ./packages/doc build
       - name: Deploy
+        if: github.event_name == 'push'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

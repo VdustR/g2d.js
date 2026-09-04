@@ -2,14 +2,17 @@ import babelParser from "@babel/parser";
 import traverse from "@babel/traverse";
 import builtinModules from "builtin-modules";
 import fs from "fs-extra";
-import glob from "glob";
-import mkdirp from "mkdirp";
+import { globSync } from "glob";
+import { mkdirp } from "mkdirp";
 import { dirname, resolve } from "path";
 import { fileURLToPath } from "url";
-import packageJson from "../package.json";
 import { PKG } from "./type";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+
+const packageJson = JSON.parse(
+  fs.readFileSync(resolve(__dirname, "../package.json"), "utf8")
+) as { dependencies: Record<string, string> };
 
 const packagesDir = resolve(__dirname, "../packages");
 
@@ -90,7 +93,7 @@ function getVersion(moduleName: string) {
 }
 
 async function setPeerDependencies(pkg: PKG) {
-  const files = glob.sync(resolve(targetDir, pkg, "**/*.js"));
+  const files = globSync(resolve(targetDir, pkg, "**/*.js"));
   const depsMap = new Map<string, string>();
   await Promise.all(
     files.map(async (file) => {
