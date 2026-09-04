@@ -11,7 +11,7 @@ overrides:
 
 patchedDependencies:
   image-size@2.0.2:
-    hash: a73127542eb89a0fdc1b3f947c52018d84aa619c91521c70371b392ca7a531ff
+    hash: 9022185e8f7bb35fe80407926c5318dfebf8fdab1ffad0be672366ad07b6f38f
     path: patches/image-size@2.0.2.patch
 
 importers:
@@ -145,7 +145,7 @@ importers:
         version: 18.3.7(@types/react@18.3.31)
       image-size:
         specifier: 2.0.2
-        version: 2.0.2(patch_hash=a73127542eb89a0fdc1b3f947c52018d84aa619c91521c70371b392ca7a531ff)
+        version: 2.0.2(patch_hash=9022185e8f7bb35fe80407926c5318dfebf8fdab1ffad0be672366ad07b6f38f)
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -7513,7 +7513,7 @@ snapshots:
       estree-util-value-to-estree: 3.5.0
       file-loader: 6.2.0(webpack@5.110.3(esbuild@0.28.2)(postcss@8.5.28))
       fs-extra: 11.4.0
-      image-size: 2.0.2(patch_hash=a73127542eb89a0fdc1b3f947c52018d84aa619c91521c70371b392ca7a531ff)
+      image-size: 2.0.2(patch_hash=9022185e8f7bb35fe80407926c5318dfebf8fdab1ffad0be672366ad07b6f38f)
       mdast-util-mdx: 3.0.0
       mdast-util-to-string: 4.0.0
       react: 18.3.1
@@ -10803,7 +10803,7 @@ snapshots:
 
   ignore@5.3.2: {}
 
-  image-size@2.0.2(patch_hash=a73127542eb89a0fdc1b3f947c52018d84aa619c91521c70371b392ca7a531ff): {}
+  image-size@2.0.2(patch_hash=9022185e8f7bb35fe80407926c5318dfebf8fdab1ffad0be672366ad07b6f38f): {}
 
   import-fresh@3.3.1:
     dependencies:

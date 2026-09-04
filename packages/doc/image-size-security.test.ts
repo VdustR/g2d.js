@@ -30,13 +30,27 @@ describe("patched image-size parsers", () => {
     writeBox(input, 20, 20, "ipco");
     writeBox(input, 28, 0, "ispe");
 
-    expect(() => HEIF.calculate(input)).toThrow("zero-length ispe box");
+    expect(() => HEIF.calculate(input)).toThrow("zero-length box");
+  });
+
+  it("rejects a zero-length box while scanning HEIF metadata", () => {
+    const input = new Uint8Array(16);
+    writeBox(input, 0, 0, "skip");
+
+    expect(() => HEIF.calculate(input)).toThrow("zero-length box");
   });
 
   it("rejects a zero-length JXL partial codestream box", () => {
     const input = new Uint8Array(12);
     writeBox(input, 0, 0, "jxlp");
 
-    expect(() => JXL.calculate(input)).toThrow("zero-length jxlp box");
+    expect(() => JXL.calculate(input)).toThrow("zero-length box");
+  });
+
+  it("rejects a zero-length box while scanning a JXL container", () => {
+    const input = new Uint8Array(12);
+    writeBox(input, 0, 0, "skip");
+
+    expect(() => JXL.calculate(input)).toThrow("zero-length box");
   });
 });
