@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v7
       - name: Cache pnpm modules
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         env:
           cache-name: cache-pnpm-modules
         with:
@@ -21,10 +21,10 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-${{ hashFiles('**/package.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v7
         with:
           node-version: "20"
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v6
         with:
           version: 10.34.5
           run_install: true
@@ -36,7 +36,7 @@ jobs:
         run: pnpm build && pnpm --filter ./packages/doc build
       - name: Deploy
         if: github.event_name == 'push'
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./packages/doc/build
