@@ -3,6 +3,7 @@ packages:
 
 overrides:
   compression: 1.8.2
+  follow-redirects: 1.16.1
   joi: 17.13.8
   postcss-selector-parser: 7.1.6
   proxy-addr: 2.0.8
