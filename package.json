@@ -23,7 +23,7 @@
     "esno": "^4.8.0",
     "fs-extra": "^11.4.0",
     "get-stdin": "^10.0.0",
-    "glob": "^13.0.6",
+    "glob": "^14.0.2",
     "mkdirp": "^3.0.1",
     "rollup": "^4.63.1",
     "rollup-plugin-add-shebang": "^0.3.1",
